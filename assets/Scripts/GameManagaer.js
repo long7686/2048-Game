@@ -1,4 +1,11 @@
 const ROWS = 4;
+const DIRECTION = cc.Enum({
+    RIGHT: -1,
+    LEFT: -1,
+    UP: -1,
+    DOWN: -1
+});
+const MIN_LENGTH = 20;
 
 cc.Class({
     extends: cc.Component,
@@ -11,6 +18,7 @@ cc.Class({
         cellPrefab : cc.Prefab,
         loseLayOut: cc.Node,
         winLayOut: cc.Node,
+
         _gap :{
             default : 10,
             serializable : false,
@@ -21,17 +29,29 @@ cc.Class({
         _posisions : [],
         _score : null,
         _canMove : true,
+        _startPoint : null,
+        _endPoint : null,
+        _firstX : null,
+        _firstY : null,
+        _endX : null,
+        _endY : null,
+        _vector : null,
+        _isTouch : true,
+        _isCLick : true,
     },
 
     onLoad(){
         this._canMove = true;
         this.loseLayOut.active = false;
+        this._isTouch = true;
+        this._isCLick = true;
     },
     
     start () {
         this._blockSize = (this.bgBox.width - this._gap * 5) / 4;
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         
+        this.eventHandler();
         this.getScoreStorge();
         this.blockInit();
         this.init();
@@ -124,20 +144,72 @@ cc.Class({
         this.scoreLabel.string = num;
     },
 
+    eventHandler(){
+        if(this._isTouch){
+            this.bgBox.on("touchstart", (event)=>{
+                this._startPoint = event.getLocation();
+                this._isCLick = false;
+                cc.log(this._isCLick)
+            })
+            this.bgBox.on("touchend", (event) =>{
+                this._endPoint = event.getLocation();
+                this.reflectTouch();
+                this._isCLick = true;
+            })
+            this.bgBox.on("touchcancel", (event) =>{
+                this._endPoint = event.getLocation();
+                this.reflectTouch();
+                this._isCLick = true;
+            })
+        }
+        if(this._isCLick){
+            this.bgBox.on("mousedown", (event) =>{
+                this._startPoint = event.getLocation();
+                this._firstX = this._startPoint.x;
+                this._firstY = this._startPoint.y;
+                this._isTouch = false;
+                cc.log(this._isTouch)
+            })
+            this.bgBox.on("mouseup", (event) =>{
+                this._endPoint = event.getLocation();
+                this._endX = this._startPoint.x - this._endPoint.x;
+                this._endY = this._startPoint.y - this._endPoint.y;
+                this._vector = cc.v2(this._endX, this._endY);
+                this.mouseEvent();
+                cc.log(this._vector.y)
+                this._isTouch = true;
+            })
+        }
+    },
+
+    reflectTouch(){
+        let startVec = this._startPoint;
+        let endVec = this._endPoint;
+        let pointsVec = endVec.sub(startVec);
+        let vecLength = pointsVec.mag();
+        if(vecLength > MIN_LENGTH){
+            if(Math.abs(pointsVec.x) > Math.abs(pointsVec.y)) {
+                if(pointsVec.x > 0) this.touchEvent(DIRECTION.RIGHT);
+                else this.touchEvent(DIRECTION.LEFT);
+            }else{
+                if(pointsVec.y > 0) this.touchEvent(DIRECTION.UP);
+                else this.touchEvent(DIRECTION.DOWN);
+            }
+        }
+    },
+
     onKeyDown(event){
         switch (event.keyCode) {
             case cc.macro.KEY.right:
                 if(this._canMove){
                     this._canMove = false
                     this.blockMoveRight();
-                    
                 }
                 break;
             case cc.macro.KEY.left:
                 if(this._canMove){
                     this._canMove = false
                     this.blockMoveLeft();
-                    
                 }
                 
                 break;
@@ -151,10 +223,66 @@ cc.Class({
                 if(this._canMove){
                     this._canMove = false
                     this.blockMoveDown();
-                    
                 }
                 break;
+        };
+       
+    },
+
+    touchEvent(direction){
+        switch(direction){
+            case DIRECTION.RIGHT: {
+                if(this._canMove){
+                    this._canMove = false
+                    this.blockMoveRight();
+                }
+                break;
+            }
+            case DIRECTION.LEFT: {
+                if(this._canMove){
+                    this._canMove = false
+                    this.blockMoveLeft();
+                }
+                break;
+            }
+            case DIRECTION.UP: {
+                if(this._canMove){
+                    this._canMove = false
+                    this.blockMoveUp();
+                }
+                break;
+            }
+            case DIRECTION.DOWN: {
+                if(this._canMove){
+                    this._canMove = false
+                    this.blockMoveDown();
+                }
+                break;
+            }
         }
+    },
+
+    mouseEvent(){
+            if(this._vector.x < 0 && this._vector.y < 50 && this._vector.y > -50){
+                this._canMove = false
+                this.blockMoveRight();
+                cc.log("Right")
+            }else if(this._vector.x > 0 && this._vector.y < 50 && this._vector.y > -50){
+                this._canMove = false
+                this.blockMoveLeft();
+                cc.log("Left")
+            }
+            if(this._vector.y < 0 && this._vector.x < 50 && this._vector.x > -50){
+                this._canMove = false
+                this.blockMoveUp();
+                cc.log("Up")
+                cc.log(this._vector.y)
+            }else if(this._vector.y > 0 && this._vector.x < 50 && this._vector.x > -50){
+                cc.log("Down")
+                cc.log(this._vector.y)
+                this._canMove = false
+                this.blockMoveDown();
+            }
     },
 
     afterMove(hasMoved){
@@ -467,7 +595,6 @@ cc.Class({
     },
 
     getScoreStorge(){
-        cc.log(this.bestScoreLabel.string)
         let scoreStorge = cc.sys.localStorage.getItem('bestScore');
         if(scoreStorge !== null){
             this.bestScoreLabel.string = JSON.parse(scoreStorge);
@@ -477,8 +604,6 @@ cc.Class({
     },
 
     checkScore(){
-        cc.log("score " + this.scoreLabel.string);
-        cc.log("best score " +this.bestScoreLabel.string);
         let newScore = parseInt(this.scoreLabel.string);
         if(newScore > this.bestScoreLabel.string){
             cc.sys.localStorage.setItem('bestScore', JSON.stringify(newScore));

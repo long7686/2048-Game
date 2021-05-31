@@ -1,69 +1,159 @@
-2021-05-31T03:44:29.666Z - normal: Load ~/.CocosCreator/settings.json
-2021-05-31T03:44:29.705Z - normal: Initializing Asset Database
-2021-05-31T03:44:29.706Z - normal: checking language setting...
-2021-05-31T03:44:29.706Z - normal: Language: en
-2021-05-31T03:44:30.155Z - success: preview server running at http://localhost:7456
-2021-05-31T03:44:30.166Z - success: protocol editor-framework registered
-2021-05-31T03:44:30.166Z - success: protocol app registered
-2021-05-31T03:44:30.166Z - success: protocol theme registered
-2021-05-31T03:44:30.166Z - success: protocol packages registered
-2021-05-31T03:44:30.166Z - success: protocol uuid registerred
-2021-05-31T03:44:30.166Z - success: protocol db registerred
-2021-05-31T03:44:30.166Z - success: protocol thumbnail registerred
-2021-05-31T03:44:30.166Z - success: protocol unpack registerred
-2021-05-31T03:44:30.167Z - success: protocol disable-commonjs registerred
-2021-05-31T03:44:31.235Z - normal: connected!
-2021-05-31T03:44:31.237Z - normal: Check project /Users/gemi/Git Desktop/2048-Game
-2021-05-31T03:44:31.238Z - normal: Initializing project /Users/gemi/Git Desktop/2048-Game
-2021-05-31T03:44:31.480Z - normal: Initializing Cocos2d
-2021-05-31T03:44:31.914Z - normal: Initializing engine extends
-2021-05-31T03:44:31.930Z - success: alipay-adapter loaded
-2021-05-31T03:44:31.935Z - success: asset-db-debugger loaded
-2021-05-31T03:44:31.940Z - success: baidu-adapter loaded
-2021-05-31T03:44:31.943Z - success: color-picker loaded
-2021-05-31T03:44:32.043Z - success: fb-audience-network loaded
-2021-05-31T03:44:32.079Z - success: fb-live-stream loaded
-2021-05-31T03:44:32.081Z - success: google-play-instant loaded
-2021-05-31T03:44:32.084Z - success: huawei-runtime loaded
-2021-05-31T03:44:32.232Z - success: cpk-publish loaded
-2021-05-31T03:44:32.232Z - success: jsb-adapter loaded
-2021-05-31T03:44:32.235Z - success: oppo-runtime loaded
-2021-05-31T03:44:32.238Z - success: package-manager loaded
-2021-05-31T03:44:32.310Z - success: qqplay-adapter loaded
-2021-05-31T03:44:32.311Z - success: runtime-dev-tools loaded
-2021-05-31T03:44:32.314Z - success: sdkbox loaded
-2021-05-31T03:44:32.317Z - success: tester loaded
-2021-05-31T03:44:32.319Z - success: ui-kit-preview-extra loaded
-2021-05-31T03:44:32.321Z - success: ui-kit-preview loaded
-2021-05-31T03:44:32.323Z - success: ui-kit loaded
-2021-05-31T03:44:32.326Z - success: vivo-runtime loaded
-2021-05-31T03:44:32.327Z - success: weapp-adapter loaded
-2021-05-31T03:44:32.327Z - success: xiaomi-adapter loaded
-2021-05-31T03:44:32.329Z - success: alipay-minigame loaded
-2021-05-31T03:44:32.361Z - success: assets loaded
-2021-05-31T03:44:32.363Z - success: builder loaded
-2021-05-31T03:44:32.533Z - success: cocos-services loaded
-2021-05-31T03:44:32.538Z - success: console loaded
-2021-05-31T03:44:32.566Z - success: fb-instant-games loaded
-2021-05-31T03:44:32.569Z - success: game-window loaded
-2021-05-31T03:44:32.570Z - success: google-instant-games loaded
-2021-05-31T03:44:32.575Z - success: hierarchy loaded
-2021-05-31T03:44:32.578Z - success: inspector loaded
-2021-05-31T03:44:32.579Z - success: keystore loaded
-2021-05-31T03:44:32.585Z - success: node-library loaded
-2021-05-31T03:44:32.586Z - success: package-asset loaded
-2021-05-31T03:44:32.587Z - success: preferences loaded
-2021-05-31T03:44:32.590Z - success: project-exporter loaded
-2021-05-31T03:44:32.594Z - success: project-importer loaded
-2021-05-31T03:44:32.596Z - success: project-settings loaded
-2021-05-31T03:44:32.600Z - success: scene loaded
-2021-05-31T03:44:32.601Z - success: simulator-debugger loaded
-2021-05-31T03:44:32.602Z - success: sprite-editor loaded
-2021-05-31T03:44:32.605Z - success: store loaded
-2021-05-31T03:44:32.610Z - success: timeline loaded
-2021-05-31T03:44:32.612Z - success: xiaomi-runtime loaded
-2021-05-31T03:44:32.714Z - success: im-plugin loaded
-2021-05-31T03:44:35.172Z - info: Cocos Services load base data!
-2021-05-31T03:44:37.266Z - normal: Loading packages
-2021-05-31T03:44:37.272Z - normal: Watching packages
-2021-05-31T03:44:37.376Z - normal: Run Application
+2021-05-31T08:40:30.704Z - normal: Load ~/.CocosCreator/settings.json
+2021-05-31T08:40:30.747Z - normal: Initializing Asset Database
+2021-05-31T08:40:30.749Z - normal: checking language setting...
+2021-05-31T08:40:30.749Z - normal: Language: en
+2021-05-31T08:40:31.228Z - success: preview server running at http://localhost:7456
+2021-05-31T08:40:31.239Z - success: protocol editor-framework registered
+2021-05-31T08:40:31.239Z - success: protocol app registered
+2021-05-31T08:40:31.239Z - success: protocol theme registered
+2021-05-31T08:40:31.239Z - success: protocol packages registered
+2021-05-31T08:40:31.240Z - success: protocol uuid registerred
+2021-05-31T08:40:31.240Z - success: protocol db registerred
+2021-05-31T08:40:31.240Z - success: protocol thumbnail registerred
+2021-05-31T08:40:31.240Z - success: protocol unpack registerred
+2021-05-31T08:40:31.240Z - success: protocol disable-commonjs registerred
+2021-05-31T08:40:32.245Z - normal: connected!
+2021-05-31T08:40:32.246Z - normal: Check project /Users/gemi/Git Desktop/2048-Game
+2021-05-31T08:40:32.248Z - normal: Initializing project /Users/gemi/Git Desktop/2048-Game
+2021-05-31T08:40:32.493Z - normal: Initializing Cocos2d
+2021-05-31T08:40:32.911Z - normal: Initializing engine extends
+2021-05-31T08:40:32.928Z - success: alipay-adapter loaded
+2021-05-31T08:40:32.936Z - success: asset-db-debugger loaded
+2021-05-31T08:40:32.940Z - success: baidu-adapter loaded
+2021-05-31T08:40:32.944Z - success: color-picker loaded
+2021-05-31T08:40:33.044Z - success: fb-audience-network loaded
+2021-05-31T08:40:33.075Z - success: fb-live-stream loaded
+2021-05-31T08:40:33.077Z - success: google-play-instant loaded
+2021-05-31T08:40:33.080Z - success: huawei-runtime loaded
+2021-05-31T08:40:33.218Z - success: cpk-publish loaded
+2021-05-31T08:40:33.218Z - success: jsb-adapter loaded
+2021-05-31T08:40:33.221Z - success: oppo-runtime loaded
+2021-05-31T08:40:33.224Z - success: package-manager loaded
+2021-05-31T08:40:33.293Z - success: qqplay-adapter loaded
+2021-05-31T08:40:33.294Z - success: runtime-dev-tools loaded
+2021-05-31T08:40:33.297Z - success: sdkbox loaded
+2021-05-31T08:40:33.300Z - success: tester loaded
+2021-05-31T08:40:33.302Z - success: ui-kit-preview-extra loaded
+2021-05-31T08:40:33.304Z - success: ui-kit-preview loaded
+2021-05-31T08:40:33.306Z - success: ui-kit loaded
+2021-05-31T08:40:33.310Z - success: vivo-runtime loaded
+2021-05-31T08:40:33.310Z - success: weapp-adapter loaded
+2021-05-31T08:40:33.311Z - success: xiaomi-adapter loaded
+2021-05-31T08:40:33.312Z - success: alipay-minigame loaded
+2021-05-31T08:40:33.344Z - success: assets loaded
+2021-05-31T08:40:33.346Z - success: builder loaded
+2021-05-31T08:40:33.513Z - success: cocos-services loaded
+2021-05-31T08:40:33.517Z - success: console loaded
+2021-05-31T08:40:33.544Z - success: fb-instant-games loaded
+2021-05-31T08:40:33.547Z - success: game-window loaded
+2021-05-31T08:40:33.548Z - success: google-instant-games loaded
+2021-05-31T08:40:33.552Z - success: hierarchy loaded
+2021-05-31T08:40:33.555Z - success: inspector loaded
+2021-05-31T08:40:33.556Z - success: keystore loaded
+2021-05-31T08:40:33.559Z - success: node-library loaded
+2021-05-31T08:40:33.560Z - success: package-asset loaded
+2021-05-31T08:40:33.561Z - success: preferences loaded
+2021-05-31T08:40:33.563Z - success: project-exporter loaded
+2021-05-31T08:40:33.566Z - success: project-importer loaded
+2021-05-31T08:40:33.569Z - success: project-settings loaded
+2021-05-31T08:40:33.572Z - success: scene loaded
+2021-05-31T08:40:33.573Z - success: simulator-debugger loaded
+2021-05-31T08:40:33.574Z - success: sprite-editor loaded
+2021-05-31T08:40:33.577Z - success: store loaded
+2021-05-31T08:40:33.581Z - success: timeline loaded
+2021-05-31T08:40:33.584Z - success: xiaomi-runtime loaded
+2021-05-31T08:40:33.680Z - success: im-plugin loaded
+2021-05-31T08:40:36.377Z - info: Cocos Services load base data!
+2021-05-31T08:40:37.847Z - normal: Loading packages
+2021-05-31T08:40:37.851Z - normal: Watching packages
+2021-05-31T08:40:37.933Z - normal: Run Application
+2021-05-31T10:14:42.899Z - failed: [db-task][sync-changes] Failed to import asset /Users/gemi/Git Desktop/2048-Game/assets/Scripts/GameManagaer.js, message: Compile error: SyntaxError: /Users/gemi/Git Desktop/2048-Game/assets/Scripts/GameManagaer.js: Unexpected token, expected , (274:23)
+  272 |     },
+  273 | 
+> 274 |     afterMove(hasMoved){
+      |                        ^
+  275 |         this._canMove = true
+  276 |         if(hasMoved){
+  277 |             this.updateScore(this._score + 1);
+    at Parser.pp$5.raise (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:4454:13)
+    at Parser.pp.unexpected (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:1761:8)
+    at Parser.pp.expect (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:1749:33)
+    at Parser.pp$3.parseCallExpressionArguments (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3564:12)
+    at Parser.pp$3.parseSubscripts (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3533:31)
+    at Parser.pp$3.parseExprSubscripts (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3504:15)
+    at Parser.pp$3.parseMaybeUnary (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3474:19)
+    at Parser.pp$3.parseExprOps (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3404:19)
+    at Parser.pp$3.parseMaybeConditional (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3381:19)
+    at Parser.pp$3.parseMaybeAssign (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3344:19)
+2021-05-31T10:21:41.664Z - failed: [db-task][sync-changes] Failed to import asset /Users/gemi/Git Desktop/2048-Game/assets/Scripts/GameManagaer.js, message: Compile error: SyntaxError: /Users/gemi/Git Desktop/2048-Game/assets/Scripts/GameManagaer.js: Unexpected token (39:17)
+  37 |         _endY : null,
+  38 |         _vector : null,
+> 39 |         _isTouch = true,
+     |                  ^
+  40 |         _isClick = true,
+  41 |     },
+  42 | 
+    at Parser.pp$5.raise (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:4454:13)
+    at Parser.pp.unexpected (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:1761:8)
+    at Parser.pp$3.parseMaybeAssign (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3370:10)
+    at Parser.pp$3.parseExprListItem (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:4312:16)
+    at Parser.pp$3.parseCallExpressionArguments (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3573:20)
+    at Parser.pp$3.parseSubscripts (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3533:31)
+    at Parser.pp$3.parseExprSubscripts (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3504:15)
+    at Parser.pp$3.parseMaybeUnary (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3474:19)
+    at Parser.pp$3.parseExprOps (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3404:19)
+    at Parser.pp$3.parseMaybeConditional (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3381:19)
+2021-05-31T10:22:19.746Z - failed: [db-task][sync-changes] Failed to import asset /Users/gemi/Git Desktop/2048-Game/assets/Scripts/GameManagaer.js, message: Compile error: SyntaxError: /Users/gemi/Git Desktop/2048-Game/assets/Scripts/GameManagaer.js: Unexpected token (39:17)
+  37 |         _endY : null,
+  38 |         _vector : null,
+> 39 |         _isTouch = true,
+     |                  ^
+  40 |         _isClick = true,
+  41 |     },
+  42 | 
+    at Parser.pp$5.raise (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:4454:13)
+    at Parser.pp.unexpected (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:1761:8)
+    at Parser.pp$3.parseMaybeAssign (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3370:10)
+    at Parser.pp$3.parseExprListItem (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:4312:16)
+    at Parser.pp$3.parseCallExpressionArguments (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3573:20)
+    at Parser.pp$3.parseSubscripts (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3533:31)
+    at Parser.pp$3.parseExprSubscripts (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3504:15)
+    at Parser.pp$3.parseMaybeUnary (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3474:19)
+    at Parser.pp$3.parseExprOps (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3404:19)
+    at Parser.pp$3.parseMaybeConditional (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3381:19)
+2021-05-31T10:22:41.883Z - failed: [db-task][sync-changes] Failed to import asset /Users/gemi/Git Desktop/2048-Game/assets/Scripts/GameManagaer.js, message: Compile error: SyntaxError: /Users/gemi/Git Desktop/2048-Game/assets/Scripts/GameManagaer.js: Unexpected token (39:17)
+  37 |         _endY : null,
+  38 |         _vector : null,
+> 39 |         _isTouch = true,
+     |                  ^
+  40 |         _isClick = true,
+  41 |     },
+  42 | 
+    at Parser.pp$5.raise (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:4454:13)
+    at Parser.pp.unexpected (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:1761:8)
+    at Parser.pp$3.parseMaybeAssign (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3370:10)
+    at Parser.pp$3.parseExprListItem (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:4312:16)
+    at Parser.pp$3.parseCallExpressionArguments (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3573:20)
+    at Parser.pp$3.parseSubscripts (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3533:31)
+    at Parser.pp$3.parseExprSubscripts (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3504:15)
+    at Parser.pp$3.parseMaybeUnary (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3474:19)
+    at Parser.pp$3.parseExprOps (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3404:19)
+    at Parser.pp$3.parseMaybeConditional (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3381:19)
+2021-05-31T10:26:42.896Z - failed: [db-task][sync-changes] Failed to import asset /Users/gemi/Git Desktop/2048-Game/assets/Scripts/GameManagaer.js, message: Compile error: SyntaxError: /Users/gemi/Git Desktop/2048-Game/assets/Scripts/GameManagaer.js: Unexpected token (48:4)
+  46 |         this._isTouch = true,
+  47 |         this._isCLick = true,
+> 48 |     },
+     |     ^
+  49 |     
+  50 |     start () {
+  51 |         this._blockSize = (this.bgBox.width - this._gap * 5) / 4;
+    at Parser.pp$5.raise (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:4454:13)
+    at Parser.pp.unexpected (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:1761:8)
+    at Parser.pp$3.parseExprAtom (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3750:12)
+    at Parser.pp$3.parseExprSubscripts (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3494:19)
+    at Parser.pp$3.parseMaybeUnary (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3474:19)
+    at Parser.pp$3.parseExprOps (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3404:19)
+    at Parser.pp$3.parseMaybeConditional (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3381:19)
+    at Parser.pp$3.parseMaybeAssign (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3344:19)
+    at Parser.pp$3.parseExpression (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:3311:34)
+    at Parser.pp$1.parseStatement (/Users/gemi/Documents/CocosCreator.app/Contents/Resources/app.asar/node_modules/babylon/lib/index.js:1906:19)
