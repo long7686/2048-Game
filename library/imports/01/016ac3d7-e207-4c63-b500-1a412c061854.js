@@ -133,7 +133,6 @@ cc.Class({
                     this._canMove = false;
                     this.blockMoveLeft();
                 }
-
                 break;
             case cc.macro.KEY.up:
                 if (this._canMove) {
@@ -151,13 +150,13 @@ cc.Class({
     },
 
 
-    updateBlockNum: function updateBlockNum() {
-        for (var row = 0; row < ROWS; row++) {
-            for (var col = 0; col < ROWS; col++) {
-                this._arrBlock[row][col].getComponent("BlockController").setNumber(this._data[row][col]);
-            }
-        }
-    },
+    // updateBlockNum: function () {
+    //     for (let row = 0; row < ROWS; row++) {
+    //         for (let col = 0; col < ROWS; col++) {
+    //             this._arrBlock[row][col].getComponent("BlockController").setNumber(this._data[row][col]);
+    //         }
+    //     }
+    // },
 
     afterMove: function afterMove(hasMoved) {
         this._canMove = true;
