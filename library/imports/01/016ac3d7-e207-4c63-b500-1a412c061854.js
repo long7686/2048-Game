@@ -148,6 +148,7 @@ cc.Class({
                 break;
         }
     },
+<<<<<<< Updated upstream
 
 
     // updateBlockNum: function () {
@@ -158,6 +159,8 @@ cc.Class({
     //     }
     // },
 
+=======
+>>>>>>> Stashed changes
     afterMove: function afterMove(hasMoved) {
         this._canMove = true;
         if (hasMoved) {
@@ -221,7 +224,6 @@ cc.Class({
             } else if (_this._data[x][y + 1] == _this._data[x][y]) {
                 var _block = _this._arrBlock[x][y];
                 var _position = _this._posisions[x][y + 1];
-
                 _this._data[x][y + 1] *= 2;
                 _this._data[x][y] = 0;
                 _this._arrBlock[x][y] = null;
@@ -248,7 +250,7 @@ cc.Class({
                 }
             }
         }
-
+        cc.log(toMove);
         var count = 0;
         for (var _i = 0; _i < toMove.length; _i++) {
             move(toMove[_i].x, toMove[_i].y, function () {

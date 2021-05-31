@@ -220,7 +220,10 @@ cc.Class({
             } else if (this._data[x][y + 1] == this._data[x][y]) {
                 let block = this._arrBlock[x][y];
                 let position = this._posisions[x][y + 1];
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
                 this._data[x][y + 1] *= 2;
                 this._data[x][y] = 0;
                 this._arrBlock[x][y] = null
@@ -247,7 +250,7 @@ cc.Class({
                 }
             }
         }
-
+        cc.log(toMove)
         let count = 0;
         for (let i = 0; i < toMove.length; i++) {
             move(toMove[i].x, toMove[i].y, () => {
