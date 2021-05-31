@@ -9,13 +9,14 @@ cc.Class({
         blockPrefab : cc.Prefab,
         bgBox : cc.Node,
         cellPrefab : cc.Prefab,
-
+        loseLayOut: cc.Node,
+        winLayOut: cc.Node,
         _gap :{
             default : 10,
             serializable : false,
         },
         _blockSize : null,
-        _data : [],
+        _data: [],
         _arrBlock : [],
         _posisions : [],
         _score : null,
@@ -23,20 +24,19 @@ cc.Class({
     },
 
     onLoad(){
-        this._canMove = true
+        this._canMove = true;
+        this.loseLayOut.active = false;
     },
     
     start () {
         this._blockSize = (this.bgBox.width - this._gap * 5) / 4;
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.moveBlock, this);
+        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         
         this.blockInit();
         this.init();
-        cc.log(this._data)
-        cc.log(this._arrBlock);
     },
 
-    arrInit( x, y){
+    arrInit(x, y){
         let blockArr = new Array();
         for (let i = 0; i < x; i++) {
             blockArr[i] = new Array();
@@ -97,7 +97,6 @@ cc.Class({
     },
 
     addBlock(){
-        
         let locations = this.getEmptyLocations();
         if(locations.length === 0) return false;
 
@@ -124,7 +123,7 @@ cc.Class({
         this.scoreLabel.string = num;
     },
 
-    moveBlock(event){
+    onKeyDown(event){
         switch (event.keyCode) {
             case cc.macro.KEY.right:
                 if(this._canMove){
@@ -166,18 +165,17 @@ cc.Class({
     },
 
     afterMove(hasMoved){
+        this._canMove = true
         if(hasMoved){
             this.updateScore(this._score + 1);
             this.addBlock();
-            this._canMove = true
         }
         else if(this.checkGameOver()){
-            cc.log("gameOver");
+            this.gameOver()
         }
-        cc.log(this._canMove)
     },
 
-    doMove(block, position, callback){
+    moveBlock(block, position, callback){
         let action = cc.moveTo(.05, position);
         let finish = cc.callFunc(()=>{
             callback && callback();
@@ -185,7 +183,7 @@ cc.Class({
         block.runAction(cc.sequence(action, finish,));
     },
 
-    doMerge(b1, b2, num, callback){
+    combineBlock(b1, b2, num, callback){
         b1.destroy();
         let scale1 = cc.scaleTo(0.1, 1.1);
         let scale2 = cc.scaleTo(0.1, 1);
@@ -198,8 +196,7 @@ cc.Class({
         b2.runAction(cc.sequence(scale1, mid, scale2, finish));
     },
 
-    checkGameOver(){
-        
+    checkGameOver(){  
         for (let i = 0; i < ROWS; i++) {
             for (let j = 0; j < ROWS; j++) {
                 let n = this._data[i][j];
@@ -227,7 +224,7 @@ cc.Class({
                 this._data[x][y + 1] = this._data[x][y];
                 this._data[x][y] = 0;
                 this._arrBlock[x][y] = null;
-                this.doMove(block, position, ()=>{
+                this.moveBlock(block, position, ()=>{
                     move(x, y + 1, callback);
                 });
                 hasMoved = true;
@@ -238,8 +235,8 @@ cc.Class({
                 this._data[x][y + 1] *= 2;
                 this._data[x][y] = 0;
                 this._arrBlock[x][y] = null
-                this.doMove(block, position, ()=>{
-                    this.doMerge(block, this._arrBlock[x][y + 1], this._data[x][y + 1],()=>{
+                this.moveBlock(block, position, ()=>{
+                    this.combineBlock(block, this._arrBlock[x][y + 1], this._data[x][y + 1],()=>{
                         callback && callback();
                     })
                 });
@@ -286,7 +283,7 @@ cc.Class({
                 this._data[x][y - 1] = this._data[x][y];
                 this._data[x][y] = 0;
                 this._arrBlock[x][y] = null;
-                this.doMove(block, position, ()=>{
+                this.moveBlock(block, position, ()=>{
                     move(x, y - 1, callback);
                 });
                 hasMoved = true;
@@ -297,8 +294,8 @@ cc.Class({
                 this._data[x][y - 1] *= 2;
                 this._data[x][y] = 0;
                 this._arrBlock[x][y] = null
-                this.doMove(block, position, ()=>{
-                    this.doMerge(block, this._arrBlock[x][y - 1], this._data[x][y - 1],()=>{
+                this.moveBlock(block, position, ()=>{
+                    this.combineBlock(block, this._arrBlock[x][y - 1], this._data[x][y - 1],()=>{
                         callback && callback();
                     })
                 });
@@ -344,7 +341,7 @@ cc.Class({
                 this._data[x + 1][y] = this._data[x][y];
                 this._data[x][y] = 0;
                 this._arrBlock[x][y] = null;
-                this.doMove(block, position, ()=>{
+                this.moveBlock(block, position, ()=>{
                     move(x + 1, y, callback);
                 });
                 hasMoved = true;
@@ -355,8 +352,8 @@ cc.Class({
                 this._data[x + 1][y] *= 2;
                 this._data[x][y] = 0;
                 this._arrBlock[x][y] = null
-                this.doMove(block, position, ()=>{
-                    this.doMerge(block, this._arrBlock[x + 1][y], this._data[x + 1][y],()=>{
+                this.moveBlock(block, position, ()=>{
+                    this.combineBlock(block, this._arrBlock[x + 1][y], this._data[x + 1][y],()=>{
                         callback && callback();
                     })
                 });
@@ -401,7 +398,7 @@ cc.Class({
                 this._data[x - 1][y] = this._data[x][y];
                 this._data[x][y] = 0;
                 this._arrBlock[x][y] = null;
-                this.doMove(block, position, ()=>{
+                this.moveBlock(block, position, ()=>{
                     move(x - 1, y, callback);
                 });
                 hasMoved = true;
@@ -412,8 +409,8 @@ cc.Class({
                 this._data[x - 1][y] *= 2;
                 this._data[x][y] = 0;
                 this._arrBlock[x][y] = null
-                this.doMove(block, position, ()=>{
-                    this.doMerge(block, this._arrBlock[x - 1][y], this._data[x - 1][y],()=>{
+                this.moveBlock(block, position, ()=>{
+                    this.combineBlock(block, this._arrBlock[x - 1][y], this._data[x - 1][y],()=>{
                         callback && callback();
                     })
                 });
@@ -434,7 +431,6 @@ cc.Class({
                 }
             }
         }
-        cc.log(toMove)
         let count = 0;
         for (let i = 0; i < toMove.length; i++) {
             move(toMove[i].x, toMove[i].y, ()=>{
@@ -444,5 +440,36 @@ cc.Class({
                 }
             })
         }
+    },
+
+    gameOver(){
+        cc.tween(this.node)
+            .to(.5,{opacity:150})
+            .start()
+        this.loseLayOut.active = true;
+    },
+
+    gameWin(){
+        this._canMove = false;
+        cc.tween(this.node)
+            .to(.5,{opacity:150})
+            .start()
+        this.winLayOut.active = true;
+    },
+
+    onRestartClick(){
+        this._canMove = true;
+        this.blockInit();
+        this.init();
+        this.node.opacity = 255;
+        this.loseLayOut.active = false
+        this.winLayOut.active = false
+    },
+
+    onContinueClick(){
+        this._canMove = true;
+        this.node.opacity = 255;
+        this.winLayOut.active = false
     }
+
 });

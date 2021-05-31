@@ -15,7 +15,8 @@ cc.Class({
         blockPrefab: cc.Prefab,
         bgBox: cc.Node,
         cellPrefab: cc.Prefab,
-
+        loseLayOut: cc.Node,
+        winLayOut: cc.Node,
         _gap: {
             default: 10,
             serializable: false
@@ -30,15 +31,14 @@ cc.Class({
 
     onLoad: function onLoad() {
         this._canMove = true;
+        this.loseLayOut.active = false;
     },
     start: function start() {
         this._blockSize = (this.bgBox.width - this._gap * 5) / 4;
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.moveBlock, this);
+        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
 
         this.blockInit();
         this.init();
-        cc.log(this._data);
-        cc.log(this._arrBlock);
     },
     arrInit: function arrInit(x, y) {
         var blockArr = new Array();
@@ -96,7 +96,6 @@ cc.Class({
         return locations;
     },
     addBlock: function addBlock() {
-
         var locations = this.getEmptyLocations();
         if (locations.length === 0) return false;
 
@@ -121,7 +120,7 @@ cc.Class({
         this._score = num;
         this.scoreLabel.string = num;
     },
-    moveBlock: function moveBlock(event) {
+    onKeyDown: function onKeyDown(event) {
         switch (event.keyCode) {
             case cc.macro.KEY.right:
                 if (this._canMove) {
@@ -161,23 +160,22 @@ cc.Class({
     },
 
     afterMove: function afterMove(hasMoved) {
+        this._canMove = true;
         if (hasMoved) {
             this.updateScore(this._score + 1);
             this.addBlock();
-            this._canMove = true;
         } else if (this.checkGameOver()) {
-            cc.log("gameOver");
+            this.gameOver();
         }
-        cc.log(this._canMove);
     },
-    doMove: function doMove(block, position, callback) {
+    moveBlock: function moveBlock(block, position, callback) {
         var action = cc.moveTo(.05, position);
         var finish = cc.callFunc(function () {
             callback && callback();
         });
         block.runAction(cc.sequence(action, finish));
     },
-    doMerge: function doMerge(b1, b2, num, callback) {
+    combineBlock: function combineBlock(b1, b2, num, callback) {
         b1.destroy();
         var scale1 = cc.scaleTo(0.1, 1.1);
         var scale2 = cc.scaleTo(0.1, 1);
@@ -190,7 +188,6 @@ cc.Class({
         b2.runAction(cc.sequence(scale1, mid, scale2, finish));
     },
     checkGameOver: function checkGameOver() {
-
         for (var i = 0; i < ROWS; i++) {
             for (var j = 0; j < ROWS; j++) {
                 var n = this._data[i][j];
@@ -218,7 +215,7 @@ cc.Class({
                 _this._data[x][y + 1] = _this._data[x][y];
                 _this._data[x][y] = 0;
                 _this._arrBlock[x][y] = null;
-                _this.doMove(block, position, function () {
+                _this.moveBlock(block, position, function () {
                     move(x, y + 1, callback);
                 });
                 hasMoved = true;
@@ -229,8 +226,8 @@ cc.Class({
                 _this._data[x][y + 1] *= 2;
                 _this._data[x][y] = 0;
                 _this._arrBlock[x][y] = null;
-                _this.doMove(_block, _position, function () {
-                    _this.doMerge(_block, _this._arrBlock[x][y + 1], _this._data[x][y + 1], function () {
+                _this.moveBlock(_block, _position, function () {
+                    _this.combineBlock(_block, _this._arrBlock[x][y + 1], _this._data[x][y + 1], function () {
                         callback && callback();
                     });
                 });
@@ -278,7 +275,7 @@ cc.Class({
                 _this2._data[x][y - 1] = _this2._data[x][y];
                 _this2._data[x][y] = 0;
                 _this2._arrBlock[x][y] = null;
-                _this2.doMove(block, position, function () {
+                _this2.moveBlock(block, position, function () {
                     move(x, y - 1, callback);
                 });
                 hasMoved = true;
@@ -289,8 +286,8 @@ cc.Class({
                 _this2._data[x][y - 1] *= 2;
                 _this2._data[x][y] = 0;
                 _this2._arrBlock[x][y] = null;
-                _this2.doMove(_block2, _position2, function () {
-                    _this2.doMerge(_block2, _this2._arrBlock[x][y - 1], _this2._data[x][y - 1], function () {
+                _this2.moveBlock(_block2, _position2, function () {
+                    _this2.combineBlock(_block2, _this2._arrBlock[x][y - 1], _this2._data[x][y - 1], function () {
                         callback && callback();
                     });
                 });
@@ -337,7 +334,7 @@ cc.Class({
                 _this3._data[x + 1][y] = _this3._data[x][y];
                 _this3._data[x][y] = 0;
                 _this3._arrBlock[x][y] = null;
-                _this3.doMove(block, position, function () {
+                _this3.moveBlock(block, position, function () {
                     move(x + 1, y, callback);
                 });
                 hasMoved = true;
@@ -348,8 +345,8 @@ cc.Class({
                 _this3._data[x + 1][y] *= 2;
                 _this3._data[x][y] = 0;
                 _this3._arrBlock[x][y] = null;
-                _this3.doMove(_block3, _position3, function () {
-                    _this3.doMerge(_block3, _this3._arrBlock[x + 1][y], _this3._data[x + 1][y], function () {
+                _this3.moveBlock(_block3, _position3, function () {
+                    _this3.combineBlock(_block3, _this3._arrBlock[x + 1][y], _this3._data[x + 1][y], function () {
                         callback && callback();
                     });
                 });
@@ -395,7 +392,7 @@ cc.Class({
                 _this4._data[x - 1][y] = _this4._data[x][y];
                 _this4._data[x][y] = 0;
                 _this4._arrBlock[x][y] = null;
-                _this4.doMove(block, position, function () {
+                _this4.moveBlock(block, position, function () {
                     move(x - 1, y, callback);
                 });
                 hasMoved = true;
@@ -406,8 +403,8 @@ cc.Class({
                 _this4._data[x - 1][y] *= 2;
                 _this4._data[x][y] = 0;
                 _this4._arrBlock[x][y] = null;
-                _this4.doMove(_block4, _position4, function () {
-                    _this4.doMerge(_block4, _this4._arrBlock[x - 1][y], _this4._data[x - 1][y], function () {
+                _this4.moveBlock(_block4, _position4, function () {
+                    _this4.combineBlock(_block4, _this4._arrBlock[x - 1][y], _this4._data[x - 1][y], function () {
                         callback && callback();
                     });
                 });
@@ -428,7 +425,6 @@ cc.Class({
                 }
             }
         }
-        cc.log(toMove);
         var count = 0;
         for (var _i4 = 0; _i4 < toMove.length; _i4++) {
             move(toMove[_i4].x, toMove[_i4].y, function () {
@@ -438,6 +434,28 @@ cc.Class({
                 }
             });
         }
+    },
+    gameOver: function gameOver() {
+        cc.tween(this.node).to(.5, { opacity: 150 }).start();
+        this.loseLayOut.active = true;
+    },
+    gameWin: function gameWin() {
+        this._canMove = false;
+        cc.tween(this.node).to(.5, { opacity: 150 }).start();
+        this.winLayOut.active = true;
+    },
+    onRestartClick: function onRestartClick() {
+        this._canMove = true;
+        this.blockInit();
+        this.init();
+        this.node.opacity = 255;
+        this.loseLayOut.active = false;
+        this.winLayOut.active = false;
+    },
+    onContinueClick: function onContinueClick() {
+        this._canMove = true;
+        this.node.opacity = 255;
+        this.winLayOut.active = false;
     }
 });
 
