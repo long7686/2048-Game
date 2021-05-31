@@ -109,7 +109,7 @@ cc.Class({
         block.parent = this.bgBox;
         block.setPosition(position);
 
-        var number = Math.random() <= 0.95 ? 2 : 4;
+        var number = Math.random() <= 0.9 ? 2 : 4;
         block.getComponent("BlockController").setNumber(number);
         this._arrBlock[x][y] = block;
         this._data[x][y] = number;
