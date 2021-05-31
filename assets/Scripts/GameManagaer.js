@@ -32,6 +32,7 @@ cc.Class({
         this._blockSize = (this.bgBox.width - this._gap * 5) / 4;
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         
+        this.getScoreStorge();
         this.blockInit();
         this.init();
     },
@@ -156,19 +157,12 @@ cc.Class({
         }
     },
 
-    updateBlockNum: function () {
-        for (let row = 0; row < ROWS; row++) {
-            for (let col = 0; col < ROWS; col++) {
-                this._arrBlock[row][col].getComponent("BlockController").setNumber(this._data[row][col]);
-            }
-        }
-    },
-
     afterMove(hasMoved){
         this._canMove = true
         if(hasMoved){
             this.updateScore(this._score + 1);
             this.addBlock();
+            this.checkScore();
         }
         else if(this.checkGameOver()){
             this.gameOver()
@@ -470,6 +464,26 @@ cc.Class({
         this._canMove = true;
         this.node.opacity = 255;
         this.winLayOut.active = false
-    }
+    },
+
+    getScoreStorge(){
+        cc.log(this.bestScoreLabel.string)
+        let scoreStorge = cc.sys.localStorage.getItem('bestScore');
+        if(scoreStorge !== null){
+            this.bestScoreLabel.string = JSON.parse(scoreStorge);
+        }else{
+            this.bestScoreLabel.string = 0;
+        }
+    },
+
+    checkScore(){
+        cc.log("score " + this.scoreLabel.string);
+        cc.log("best score " +this.bestScoreLabel.string);
+        let newScore = parseInt(this.scoreLabel.string);
+        if(newScore > this.bestScoreLabel.string){
+            cc.sys.localStorage.setItem('bestScore', JSON.stringify(newScore));
+            this.bestScoreLabel.string = newScore;
+        }
+    },
 
 });
