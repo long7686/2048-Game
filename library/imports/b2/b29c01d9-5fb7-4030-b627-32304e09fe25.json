@@ -160,7 +160,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 264.48033932210456
+      "z": 419.15629543166835
     },
     "_scale": {
       "__type__": "cc.Vec3",
@@ -1138,6 +1138,13 @@
     "_posisions": [],
     "_score": null,
     "_canMove": true,
+    "_startPoint": null,
+    "_endPoint": null,
+    "_firstX": null,
+    "_firstY": null,
+    "_endX": null,
+    "_endY": null,
+    "_vector": null,
     "_id": "a0gETN2uNEr4BB1NPa8GPv"
   },
   {
